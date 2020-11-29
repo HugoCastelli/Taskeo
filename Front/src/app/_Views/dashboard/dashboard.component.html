@@ -1,0 +1,53 @@
+<div style="background-color: #f5f7fb; min-height: 100vh">
+  <div class="bg-gradient">
+    <div class="container-fluid position-relative px-5 pt-5">
+      <div class="d-flex justify-content-between align-items-center px-5">
+        <h2 class="mb-0 font-proxima text-white">Task'éo</h2>
+        <div class="d-flex">
+          <div class="hover-btn font-proxima mr-5 cursor-pointer text-white" href="javascript:void(0)">
+            <div (click)="openTasksCreation()" class="d-flex h-100 align-items-end">
+              <mat-icon class="mr-2">add</mat-icon>
+              Créer une tâche
+            </div>
+          </div>
+          <div class="d-flex align-items-center cursor-pointer" [matMenuTriggerFor]="menu">
+            <div style="width: 30px; height: 30px; border-radius: 10px" class="bg-white">
+              <img class="w-100 h-100" src="../../../assets/img/user.png" alt/>
+            </div>
+            <mat-icon class="text-white ml-2">keyboard_arrow_down</mat-icon>
+            <mat-menu #menu="matMenu" class="py-0 mt-2" xPosition="before">
+              <button mat-menu-item class="text-danger" (click)="auth.logout()">
+                <mat-icon class="text-danger">power_settings_new</mat-icon>
+                <span>Déconexion</span>
+              </button>
+            </mat-menu>
+          </div>
+        </div>
+      </div>
+      <div class="text-center position-absolute" style="top: 48px; left: 50%; transform: translateX(-50%)">
+        <h5 class="mb-0 font-proxima text-white">
+          Bonjour, <span class="text-capitalize">{{ profile.firstName }}</span>
+        </h5>
+        <div class="font-proxima" style="color: #cecece">Bienvenue sur votre dashboard de tâches</div>
+      </div>
+    </div>
+  </div>
+  <div class="container" style="margin-top: -80px">
+    <app-statistiques></app-statistiques>
+    <div class="mt-5 mb-5">
+      <div class="d-flex justify-content-between align-items-end mb-3">
+        <h3 class="mb-0 text--blue font-proxima">Vos tâches</h3>
+        <div class="d-flex align-items-center">
+          <div class="font-proxima mr-3" style="color: #a3a3a3">Filtrer par priorité:</div>
+          <mat-button-toggle-group appearance="legacy" [value]="activeValue">
+            <mat-button-toggle value="low" (change)="onChange($event)" class="text-success font-proxima">Bas</mat-button-toggle>
+            <mat-button-toggle value="medium" (change)="onChange($event)" class="text-warning font-proxima">Moyen</mat-button-toggle>
+            <mat-button-toggle value="high" (change)="onChange($event)" class="text-danger font-proxima">Haut</mat-button-toggle>
+          </mat-button-toggle-group>
+        </div>
+      </div>
+      <mat-divider style="border-top-width: 3px" class="mb-4"></mat-divider>
+      <app-task *ngFor="let task of tasks" [task]="task" (taskEdited)="getTasks()"></app-task>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,33 @@
+<form class="login-form" [formGroup]="signinForm" (ngSubmit)="submitLogin()" novalidate>
+	<div class="login-form-title pb-55">
+    Connexion
+  </div>
+
+  <mat-form-field class="w-100" appearance="outline">
+    <mat-label>Email</mat-label>
+    <input matInput [formControl]="f.email" required>
+  </mat-form-field>
+
+  <mat-form-field class="w-100" appearance="outline">
+    <mat-label>Mot de passe</mat-label>
+    <input matInput [formControl]="f.password" [type]="hide ? 'password' : 'text'" required>
+    <button mat-icon-button matSuffix (click)="hide = !hide">
+      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </button>
+  </mat-form-field>
+
+  <div class="container-login-form-btn pt-25">
+    <button class="btn login-form-btn" type="submit">
+      Se connecter
+    </button>
+  </div>
+
+  <div class="text-center w-100 pt-50">
+    <span class="txt">
+      Vous n'avez pas de compte ?
+    </span>
+    <a (click)="changeView.emit()" class="txt bo-bottom hov" href="javascript:void(0)">
+      S'inscrire
+    </a>
+  </div>
+</form>

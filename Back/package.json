@@ -1,0 +1,31 @@
+{
+  "name": "pp4-backend",
+  "version": "0.0.1",
+  "description": "API of the PP4 project",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "documentation": "apidoc -i ./src -o documentation",
+    "test": "mocha --file ./test/test.js --timeout 10000"
+  },
+  "keywords": [
+    "PP4"
+  ],
+  "author": "Hugo CASTELLI & Pierre HERMAN",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "cors": "^2.8.5",
+    "mocha": "^8.2.1",
+    "nodemon": "^2.0.6"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "firebase-admin": "^9.4.0",
+    "firebase-functions": "^3.11.0",
+    "moment": "^2.29.1",
+    "rand-token": "^1.0.1"
+  }
+}

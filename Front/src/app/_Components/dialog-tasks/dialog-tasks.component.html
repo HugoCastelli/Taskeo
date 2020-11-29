@@ -1,0 +1,35 @@
+<div class="modal-body p-0 w-100" style="min-width: 500px; max-width: 500px">
+  <div class="d-flex px-3 py-4" style="background: #254c71">
+    <h5 class="font-proxima text-white mb-0">Création d'une tâche</h5>
+  </div>
+  <form class="mt-3 text-center" [formGroup]="taskForm" (ngSubmit)="!data ? submitTask() : editTask()" novalidate>
+    <div class="px-4 mb-3">
+      <div class="font-proxima text-left mb-4 text-muted font-weight-lighter">
+        Assistant de création de tâche, vous pouvez configurer les différentes options de votre tâche.
+      </div>
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>Nom de la tâche</mat-label>
+        <input matInput [formControl]="f.name" required>
+      </mat-form-field>
+
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>Priorité</mat-label>
+        <mat-select [formControl]="f.priority" required>
+          <mat-option *ngFor="let option of priority" [value]="option.value">{{ option.name }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>Description</mat-label>
+        <textarea matInput [formControl]="f.description" rows="4" required></textarea>
+      </mat-form-field>
+    </div>
+
+    <div class="p-3 d-flex justify-content-between" style="background: #eaeaea">
+      <button type="button" class="btn btn-outline-danger" (click)="closeDialog()" style="min-width: 150px">Annuler</button>
+      <button class="btn btn-success ml-3" type="submit" style="min-width: 150px">
+        {{ !data ? 'Créer' : 'Mettre à jour' }}
+      </button>
+    </div>
+  </form>
+</div>

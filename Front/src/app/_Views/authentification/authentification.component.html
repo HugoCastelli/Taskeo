@@ -1,0 +1,7 @@
+<div class="container-login">
+  <app-particles></app-particles>
+  <div class="wrap-login pl-50 pr-50 pt-77 pb-30">
+    <app-signin *ngIf="login" (changeView)="login = false"></app-signin>
+    <app-signup *ngIf="!login" (changeView)="login = true"></app-signup>
+  </div>
+</div>

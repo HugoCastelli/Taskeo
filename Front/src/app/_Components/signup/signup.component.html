@@ -1,0 +1,70 @@
+<form class="login-form" [formGroup]="signupForm" (ngSubmit)="submitSignUp()" novalidate>
+  <span class="login-form-title pb-55">
+    Inscription
+  </span>
+
+  <mat-form-field class="w-100" appearance="outline">
+    <mat-label>Prénom</mat-label>
+    <input matInput [formControl]="f.firstName" required>
+    <mat-error *ngIf="f.firstName.hasError('required')">
+      Le prénom est requis.
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="w-100" appearance="outline">
+    <mat-label>Nom</mat-label>
+    <input matInput [formControl]="f.lastName" required>
+    <mat-error *ngIf="f.lastName.hasError('required')">
+      Le nom est requis.
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="w-100" appearance="outline">
+    <mat-label>Email</mat-label>
+    <input matInput [formControl]="f.email" required>
+    <mat-error *ngIf="f.email.hasError('required')">
+      L'email est requis.
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="w-100" appearance="outline">
+    <mat-label>Mot de passe</mat-label>
+    <input matInput [formControl]="f.password" [type]="hide ? 'password' : 'text'" required>
+    <button mat-icon-button matSuffix (click)="hide = !hide">
+      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </button>
+    <mat-error *ngIf="f.password.hasError('required')">
+      Le mot de passe est requis.
+    </mat-error>
+    <mat-error *ngIf="f.password.hasError('minlength')">
+      Le mot de passe doit être au moins de 6 caractères.
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="w-100" appearance="outline">
+    <mat-label>Confirmez votre mot de passe</mat-label>
+    <input matInput [formControl]="f.confirmPassword" type="password" required>
+    <mat-error *ngIf="f.confirmPassword.hasError('required')">
+      La confirmation du mot de passe est requise.
+    </mat-error>
+    <mat-error *ngIf="f.confirmPassword.hasError('mustMatch')">
+      Les mots de passe ne correspondent pas.
+    </mat-error>
+  </mat-form-field>
+
+  <div class="container-login-form-btn pt-25">
+    <button class="btn login-form-btn" type="submit">
+      Créer mon compte
+    </button>
+  </div>
+
+  <div class="text-center w-100 pt-50">
+    <span class="txt">
+      Vous avez déja un compte ?
+    </span>
+
+    <a (click)="changeView.emit()" class="txt bo-bottom hov" href="javascript:void(0)">
+      Se connecter
+    </a>
+  </div>
+</form>

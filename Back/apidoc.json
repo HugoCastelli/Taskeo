@@ -1,0 +1,7 @@
+{
+  "name": "pp4-API",
+  "version": "0.0.1",
+  "description": "The goal of the project is to create a task manager. \nThe user has to be able to login, create and update task, start a timer for each task and get a time report.\n",
+  "title": "UQAC PP4 Hugo & Pierre",
+  "url" : "http://localhost:8080/api/v1"
+}
